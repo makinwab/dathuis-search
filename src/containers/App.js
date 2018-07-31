@@ -4,12 +4,22 @@ import ClientsList from '../components/ClientsList';
 import getClients from '../api/index';
 
 
-const resolveClientsQuery = (queryResult) => {
+const resolveClientsQuery = (queryResult, cursor) => state => {
   const { edges, pageInfo } = queryResult.data.clients;
 
+  if (!cursor) {
+    return {
+      clients: edges,
+      pageInfo,
+      errors: queryResult.data.errors,
+    };
+  }
+
+  const updatedClientLists = [...state.clients, ...edges];
+
   return {
-    clients: edges,
-    pageInfo: pageInfo,
+    clients: updatedClientLists,
+    pageInfo,
     errors: queryResult.data.errors,
   };
 };
@@ -17,33 +27,30 @@ const resolveClientsQuery = (queryResult) => {
 class App extends Component {
   state = {
     clients: [],
-    pageInfo: null,
+    pageInfo: { hasNextPage: false },
     errors: null,
     name: undefined,
     origin: undefined,
-    limit: 10,
-    endCursor: undefined,
   };
 
   componentDidMount() {
-    this.onFetchData();
-  };
+    this.onFetchData(this.state);
+  }
 
-  onFetchData = () => {
-    getClients(this.state)
+  onFetchData = (data, cursor) => {
+    getClients(data, cursor)
       .then(result => {
         this.setState(resolveClientsQuery(
-          result.data
+          result.data,
+          cursor
         ));
       })
-      .catch(error => {
-        console.error("Error occurred", error);
-      });
-  };
+      .catch(error => console.error("Error occurred", error));
+  }
 
   onSubmit = event => {
     event.preventDefault();
-    this.onFetchData();
+    this.onFetchData(this.state);
   }
 
   onChangeName = event => {
@@ -52,6 +59,26 @@ class App extends Component {
 
   onChangeOrigin = event => {
     this.setState({ origin: event.target.value})
+  }
+
+  onFetchMoreClients = () => {
+    const { cursor } = this.state.pageInfo;
+
+    this.onFetchData(this.state, cursor);
+  };
+
+  clientElement = () => {
+    if (this.state.clients.length > 0) {
+      return <ClientsList clients={this.state.clients} />;
+    }
+    
+    return "No Client Information...";
+  }
+
+  buttonElement = () => {
+    if (this.state.pageInfo.hasNextPage) {
+      return <button onClick={this.onFetchMoreClients}>Load More</button>
+    }
   }
 
   render() {
@@ -80,7 +107,10 @@ class App extends Component {
 
         <hr />
 
-        <ClientsList clients={this.state.clients} />
+        
+        {this.clientElement()}
+        
+        {this.buttonElement()}
       </div>
     );
   }

@@ -5,12 +5,12 @@ const axiosSearchGraphql = axios.create({
   baseURL: 'http://localhost:4000/graphql',
 });
 
-const getClients = (data) => {
-  const { name, origin, limit, endCursor } = data;
+const getClients = (data, cursor) => {
+  const { name, origin } = data;
 
   return axiosSearchGraphql.post('', {
     query: GET_CLIENTS,
-    variables: { name, origin, limit, endCursor }
+    variables: { name, origin, cursor }
   });
 };
 

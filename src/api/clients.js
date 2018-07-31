@@ -1,6 +1,6 @@
 const GET_CLIENTS = (`
-  query($name: String, $origin: String, $limit: Int, $endCursor: ID) {
-    clients(name: $name, origin: $origin, limit: $limit, endCursor: $endCursor) {
+  query($name: String, $origin: String, $cursor: ID, $endCursor: ID) {
+    clients(name: $name, origin: $origin, cursor: $cursor, endCursor: $endCursor) {
       edges {
         id
         first_name
@@ -11,9 +11,12 @@ const GET_CLIENTS = (`
         origin
       }
       pageInfo {
+        cursor
         endCursor
         limit
         size
+        totalCount
+        hasNextPage
       }
     }
   }
