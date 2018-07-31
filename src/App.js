@@ -1,21 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ClientsList from './components/ClientsList';
+import getClients from './api/index';
+
+
+const resolveClientsQuery = (queryResult) => {
+  const { edges, pageInfo } = queryResult.data.clients;
+
+  return {
+    clients: edges,
+    pageInfo: pageInfo,
+    errors: queryResult.data.errors,
+  };
+};
 
 class App extends Component {
   state = {
-    clients: ["client one", "client two"]
+    clients: [],
+    pageInfo: null,
+    errors: null,
+    name: undefined,
+    origin: undefined,
+    limit: 10,
+    endCursor: undefined,
   };
 
   componentDidMount() {
-
+    this.onFetchData();
   };
+
+  onFetchData = () => {
+    getClients(this.state).then(result => {
+      this.setState(resolveClientsQuery(
+        result.data
+      ));
+    });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    this.onFetchData();
+  }
+
+  onChangeName = event => {
+    this.setState({ name: event.target.value})
+  }
+
+  onChangeOrigin = event => {
+    this.setState({ origin: event.target.value})
+  }
 
   render() {
     return (
       <div className="App">
-        <form onSubmit>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="name">
             Search by full name
           </label>
@@ -24,7 +62,11 @@ class App extends Component {
           <label htmlFor="origin">
             Search by origin
           </label>
-          <input id="origin" type="text" />
+          <input
+            id="origin"
+            type="text"
+            onChange={this.onChange}
+          />
           <button type="submit"> Search </button>
         </form>
 

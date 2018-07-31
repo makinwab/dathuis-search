@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const ClientItem = ({ client }) => (
   <li>
-    {client}
+    {client.first_name} {client.last_name} - {client.origin}
   </li>
 );
 
