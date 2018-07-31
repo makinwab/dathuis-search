@@ -5,6 +5,9 @@ const GET_CLIENTS = (`
         id
         first_name
         last_name
+        email
+        gender
+        photo
         origin
       }
       pageInfo {

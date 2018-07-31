@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ClientsList from './components/ClientsList';
-import getClients from './api/index';
+import ClientsList from '../components/ClientsList';
+import getClients from '../api/index';
 
 
 const resolveClientsQuery = (queryResult) => {
@@ -30,11 +30,15 @@ class App extends Component {
   };
 
   onFetchData = () => {
-    getClients(this.state).then(result => {
-      this.setState(resolveClientsQuery(
-        result.data
-      ));
-    });
+    getClients(this.state)
+      .then(result => {
+        this.setState(resolveClientsQuery(
+          result.data
+        ));
+      })
+      .catch(error => {
+        console.error("Error occurred", error);
+      });
   };
 
   onSubmit = event => {
@@ -57,7 +61,11 @@ class App extends Component {
           <label htmlFor="name">
             Search by full name
           </label>
-          <input id="name" type="text" />
+          <input
+            id="name"
+            type="text"
+            onChange={this.onChangeName}
+          />
 
           <label htmlFor="origin">
             Search by origin
@@ -65,7 +73,7 @@ class App extends Component {
           <input
             id="origin"
             type="text"
-            onChange={this.onChange}
+            onChange={this.onChangeOrigin}
           />
           <button type="submit"> Search </button>
         </form>
