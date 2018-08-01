@@ -1,6 +1,6 @@
 const GET_CLIENTS = (`
-  query($name: String, $origin: String, $cursor: ID, $endCursor: ID) {
-    clients(name: $name, origin: $origin, cursor: $cursor, endCursor: $endCursor) {
+  query($searchTerm: String, $cursor: ID, $endCursor: ID) {
+    clients(searchTerm: $searchTerm, cursor: $cursor, endCursor: $endCursor) {
       edges {
         id
         first_name

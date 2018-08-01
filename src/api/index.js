@@ -6,11 +6,11 @@ const axiosSearchGraphql = axios.create({
 });
 
 const getClients = (data, cursor) => {
-  const { name, origin } = data;
+  const { searchTerm } = data;
 
   return axiosSearchGraphql.post('', {
     query: GET_CLIENTS,
-    variables: { name, origin, cursor }
+    variables: { searchTerm, cursor }
   });
 };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ClientsList from '../components/ClientsList';
-import getClients from '../api/index';
+import getClients from '../api';
 
 
 const resolveClientsQuery = (queryResult, cursor) => state => {
@@ -29,8 +29,7 @@ class App extends Component {
     clients: [],
     pageInfo: { hasNextPage: false },
     errors: null,
-    name: undefined,
-    origin: undefined,
+    searchTerm: null,
   };
 
   componentDidMount() {
@@ -48,17 +47,9 @@ class App extends Component {
       .catch(error => console.error("Error occurred", error));
   }
 
-  onSubmit = event => {
-    event.preventDefault();
+  onChange = event => {
+    this.setState({ searchTerm: event.target.value});
     this.onFetchData(this.state);
-  }
-
-  onChangeName = event => {
-    this.setState({ name: event.target.value})
-  }
-
-  onChangeOrigin = event => {
-    this.setState({ origin: event.target.value})
   }
 
   onFetchMoreClients = () => {
@@ -84,25 +75,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form onSubmit={this.onSubmit}>
-          <label htmlFor="name">
-            Search by full name
+        <form>
+          <label htmlFor="searchTerm">
+            Search by full name or origin
           </label>
           <input
-            id="name"
+            id="searchTerm"
             type="text"
-            onChange={this.onChangeName}
+            onChange={this.onChange}
           />
-
-          <label htmlFor="origin">
-            Search by origin
-          </label>
-          <input
-            id="origin"
-            type="text"
-            onChange={this.onChangeOrigin}
-          />
-          <button type="submit"> Search </button>
         </form>
 
         <hr />
