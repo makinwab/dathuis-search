@@ -5,8 +5,9 @@
 }
 
 body {
-  font-size: 1em;
-  font-family: -apple-system, "Haas Grot Text R Web", Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.875em;
+  letter-spacing: 0.2px;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; /* -apple-system, "Haas Grot Text R Web", Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   background-color: #F7F8FA;
 }
 
@@ -14,15 +15,14 @@ body {
   width: 80%;
   margin: auto;
   padding: 20px;
-  outline: 1px solid;
 }
 
 
-/* Header Styling */
+/* Header Section */
 header {
   background: #FFFFFF;
-  outline: 1px solid #ccc;
-  color: #303030;
+  outline: 1px solid #f1f1f1;
+  color: #323436;
   height: 80px;
 }
 
@@ -46,33 +46,98 @@ header #search input {
   border-radius: 3px;
   border: none;
   border: 1px solid #f1f2f5;
-}
-/* 
-.App {
-  text-align: center;
+  outline: none;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+/* Mid Section */
+div #mid-section {
+  margin-top: 1.5em;
+  border: 1px solid #f1f1f1;
+  background-color: #ffffff;
+  box-shadow: 0.5px 0.5px 0.5px inset #f1f1f1;
+  padding: 3rem;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+div #mid-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
-.App-title {
-  font-size: 1.5em;
+#mid-head .clients-text {
+  font-weight: 500;
 }
 
-.App-intro {
-  font-size: large;
+#mid-head .count {
+  color: #4a9bc3;
+  font-weight: 500;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
+div #mid-body {
+  border-top: 1px solid #f1f1f1;
+  padding: 1.5em 0;
+}
+
+div #clients-list {
+  display: flex;
+}
+
+div #clients-list ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+#clients-list ul li {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.5em;
+}
+
+#clients-list ul li .client-photo {
+  display: flex;
+  justify-content: center;
+  align-self: top;
+  order:2;
+  width: 5rem;
+  height: 4.5rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+  border-radius: 2.5rem;
+  -moz-border-radius: 2.5rem;
+	-webkit-border-radius: 2.5rem;
+  background-color: #e4e4e6;
+  background-size: cover;
+}
+
+#clients-list ul li .client-info {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  order:1;
+  flex-direction: column;
+  padding: 0.75em 0.75em 1.5em 0;
+  border-bottom: 1px solid #f1f1f1;
+  line-height: 1.5rem;
+  font-size: 18px;
+}
+
+#clients-list ul li .client-info p.name {
+  color: #1e1f20;
+  font-weight: 500;
+}
+
+#clients-list ul li .client-info p span.gender {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+#clients-list ul li .client-info p.email {
+  color: #7b7b7b;
+  font-weight: 300;
+}
+
+#clients-list ul li .client-info p.origin {
+  color: #3e95c0;
+  font-weight: 300;
+}

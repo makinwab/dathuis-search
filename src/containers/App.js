@@ -79,8 +79,18 @@ class App extends Component {
         <Header onChange={this.onChange} />
 
         <div className="container">
-          {this.clientElement()}  
-          {this.buttonElement()}
+          <div id="mid-section">
+            <div id="mid-head">
+              <span className="clients-text">Clients</span>
+              <span className="count">{this.state.pageInfo.size} of {this.state.pageInfo.totalCount} results</span>
+            </div>
+
+            <div id="mid-body">
+              {this.clientElement()}
+            </div>
+
+            {this.buttonElement()}
+          </div>
         </div>
       </div>
     );
