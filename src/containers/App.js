@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from '../components/Header';
 import ClientsList from '../components/ClientsList';
 import getClients from '../api';
 
@@ -75,23 +76,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
-          <label htmlFor="searchTerm">
-            Search by full name or origin
-          </label>
-          <input
-            id="searchTerm"
-            type="text"
-            onChange={this.onChange}
-          />
-        </form>
+        <Header onChange={this.onChange} />
 
-        <hr />
-
-        
-        {this.clientElement()}
-        
-        {this.buttonElement()}
+        <div className="container">
+          {this.clientElement()}  
+          {this.buttonElement()}
+        </div>
       </div>
     );
   }

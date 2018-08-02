@@ -1,3 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1em;
+  font-family: -apple-system, "Haas Grot Text R Web", Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #F7F8FA;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  outline: 1px solid;
+}
+
+
+/* Header Styling */
+header {
+  background: #FFFFFF;
+  outline: 1px solid #ccc;
+  color: #303030;
+  height: 80px;
+}
+
+header .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+header #search {
+  width: 80%;
+  align-items: center;
+}
+
+header #search input {
+  width: 100%;
+  padding: 1%;
+  font-size: 1.1875em;
+  text-transform: capitalize;
+  background-color: #F7F8FA;
+  border-radius: 3px;
+  border: none;
+  border: 1px solid #f1f2f5;
+}
+/* 
 .App {
   text-align: center;
 }
@@ -25,4 +75,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
