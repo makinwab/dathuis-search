@@ -89,7 +89,9 @@ class App extends Component {
               {this.clientElement()}
             </div>
 
-            {this.buttonElement()}
+            <div id="load-more">
+              {this.buttonElement()}
+            </div>
           </div>
         </div>
       </div>

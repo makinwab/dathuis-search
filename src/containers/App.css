@@ -24,6 +24,7 @@ header {
   outline: 1px solid #f1f1f1;
   color: #323436;
   height: 80px;
+  position: relative;
 }
 
 header .container {
@@ -140,4 +141,20 @@ div #clients-list ul {
 #clients-list ul li .client-info p.origin {
   color: #3e95c0;
   font-weight: 300;
+}
+
+
+/* Load More Section */
+div #load-more {
+  display: flex;
+  justify-content: center;
+}
+
+div #load-more button {
+  border:none;
+  color: #3e95c0;
+  font-weight: 400;
+  font-size: 1em;
+  cursor: pointer;
+  outline:none;
 }
