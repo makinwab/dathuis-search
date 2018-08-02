@@ -42,12 +42,41 @@ header #search input {
   width: 100%;
   padding: 1%;
   font-size: 1.1875em;
-  text-transform: capitalize;
+  font-weight: 300;
   background-color: #F7F8FA;
   border-radius: 3px;
   border: none;
   border: 1px solid #f1f2f5;
   outline: none;
+}
+
+@media (max-width: 1024px) {
+  header #search input {
+    margin: -0.2em auto;
+  }
+}
+
+@media (max-width: 768px) {
+  header #search input {
+    margin: 0em auto;
+    padding: 2%;
+  }
+}
+
+@media (max-width: 425px) {
+  header #search input {
+    font-size: 12px;
+    margin: 0.09375em auto;
+    padding: 5%;
+  }
+}
+
+@media (max-width: 320px) {
+  header #search input {
+    font-size: 11px;
+    margin: 0.09375em auto;
+    padding: 5%;
+  }
 }
 
 
@@ -58,6 +87,12 @@ div #mid-section {
   background-color: #ffffff;
   box-shadow: 0.5px 0.5px 0.5px inset #f1f1f1;
   padding: 3rem;
+}
+
+@media (max-width: 375px) {
+  div #mid-section {
+    padding: 1.5rem;
+  }
 }
 
 div #mid-head {
@@ -73,6 +108,16 @@ div #mid-head {
 #mid-head .count {
   color: #4a9bc3;
   font-weight: 500;
+}
+
+@media (max-width: 375px) {
+  div #mid-head {
+   flex-direction: column; 
+  }
+
+  #mid-head .count {
+    margin-top: 0.375em;
+  }
 }
 
 div #mid-body {
@@ -121,7 +166,46 @@ div #clients-list ul {
   border-bottom: 1px solid #f1f1f1;
   line-height: 1.5rem;
   font-size: 18px;
+  word-wrap: break-word;
 }
+
+
+@media (max-width: 768px) {
+  #clients-list ul li .client-photo {
+    width: 5rem;
+    height: 4.2rem;
+    margin-right: 0.5em;
+  }
+}
+
+@media (max-width: 720px) {
+  #clients-list ul li .client-photo {
+    flex-direction: column;
+    order: 1;
+    width: 3rem;
+    height: 3rem;
+    align-self: flex-start;
+  }
+
+  #clients-list ul li .client-info {
+    width:60%;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  #clients-list ul li .client-photo {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.5em;
+  }
+
+  #clients-list ul li .client-info {
+    font-size: 14px;
+    width: 65%;
+  }
+}
+
 
 #clients-list ul li .client-info p.name {
   color: #1e1f20;

@@ -9,7 +9,7 @@ const Header = ({ onChange }) => (
             id="searchTerm"
             type="text"
             onChange={onChange}
-            placeholder="Search by fullname or origin"
+            placeholder="Search by Fullname or Origin"
           />
         </form>
       </div>
