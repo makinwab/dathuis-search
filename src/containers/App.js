@@ -45,7 +45,7 @@ class App extends Component {
           cursor
         ));
       })
-      .catch(error => console.error("Error occurred", error));
+      .catch(error => console.error("Error occurred"));
   }
 
   onChange = event => {
