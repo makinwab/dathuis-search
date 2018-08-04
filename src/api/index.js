@@ -2,7 +2,7 @@ import axios from 'axios';
 import GET_CLIENTS from './clients';
 
 const axiosSearchGraphql = axios.create({
-  baseURL: 'http://localhost:4000/graphql',
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 const getClients = (data, cursor) => {
