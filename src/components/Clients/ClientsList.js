@@ -1,4 +1,5 @@
 import React from 'react';
+import './Clients.css';
 import ClientItem from './ClientItem';
 
 const ClientsList = ({ clients }) => (

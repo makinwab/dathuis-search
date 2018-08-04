@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from '../components/Header';
-import ClientsList from '../components/ClientsList';
-import getClients from '../api';
+import Header from '../Header/Header';
+import ClientsList from '../Clients/ClientsList';
+import getClients from '../../api';
 
 
 const resolveClientsQuery = (queryResult, cursor) => state => {
