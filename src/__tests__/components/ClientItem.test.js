@@ -18,10 +18,12 @@ describe('<ClientItem />', () => {
     ReactDOM.unmountComponentAtNode(ul);
   });
 
-  it('should have 2 divs with classes client-info and client-photo', () => {
+  it('should have client-info and client-photo div elements', () => {
     const clientItemProps = {
       client: {
-        photo: ''
+        photo: '',
+        email: "a@b.com",
+        origin: "somewhere"
       }
     }
     const wrapper = shallow(<ClientItem {...clientItemProps} />);
@@ -29,5 +31,24 @@ describe('<ClientItem />', () => {
     expect(wrapper.find("div").length).toBe(2);
     expect(wrapper.find("div.client-photo").length).toBe(1);
     expect(wrapper.find("div.client-info").length).toBe(1);
+  });
+
+  it('should display a particular client information', () => {
+    const clientItemProps = {
+      client: {
+        photo: '',
+        first_name: 'first',
+        last_name: 'last',
+        email: "a@b.com",
+        origin: "somewhere",
+        gender: "female"
+      }
+    }
+    const wrapper = shallow(<ClientItem {...clientItemProps} />);
+
+    expect(wrapper.find('div.client-info p.name').text()).toBe("first last, female");
+    expect(wrapper.find('div.client-info p.origin').text()).toBe("somewhere");
+    expect(wrapper.find('div.client-info p.email').text()).toBe("a@b.com");
+    expect(wrapper.find('div.client-info p.origin').text()).toBe("somewhere");
   });
 });

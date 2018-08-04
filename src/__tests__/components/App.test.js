@@ -11,7 +11,15 @@ describe('<App />', () => {
     ReactDOM.unmountComponentAtNode(div);
   }); 
   
-  it('should display clients information', () => {
+  it('should display relevant DOM elements', () => {
+    const wrapper = shallow(<App />);
+    const clients = wrapper.find('div.App');
+
+    expect(clients.find('div.container').length).toBe(1);
+    expect(clients.find('div#load-more').length).toBe(1);
+  });
+
+  it('should display count info and header text', () => {
     const wrapper = shallow(<App />);
     wrapper.setState({
       clients: [],
@@ -27,6 +35,5 @@ describe('<App />', () => {
 
     expect(clients.find('div.container span.clients-text').text()).toBe('Clients');
     expect(clients.find('div.container span.count').text()).toBe("0 of 1 results");
-    expect(clients.find('div#load-more').length).toBe(1);
   });
 });
