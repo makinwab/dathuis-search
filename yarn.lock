@@ -2259,9 +2259,9 @@ enzyme-to-json@^3.3.4:
   dependencies:
     lodash "^4.17.4"
 
-enzyme@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.9.0.tgz#2b491f06ca966eb56b6510068c7894a7e0be3909"
+enzyme@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.10.0.tgz#7218e347c4a7746e133f8e964aada4a3523452f6"
   dependencies:
     array.prototype.flat "^1.2.1"
     cheerio "^1.0.0-rc.2"
@@ -5825,7 +5825,7 @@ react-dev-utils@^5.0.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.8.6:
+react-dom@^16.4.1:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   dependencies:
